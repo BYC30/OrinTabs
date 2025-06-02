@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "OrinTabs",
+  "version": "0.1.0",
+  "description": "Intelligent browser tab management",
+  "permissions": ["tabs", "tabGroups"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "OrinTabs"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
