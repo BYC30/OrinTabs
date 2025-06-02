@@ -3,7 +3,8 @@
   "name": "OrinTabs",
   "version": "0.1.0",
   "description": "Intelligent browser tab management",
-  "permissions": ["tabs", "tabGroups"],
+  "permissions": ["tabs", "tabGroups", "scripting", "activeTab", "storage"],
+  "host_permissions": ["https://*/*", "http://*/*"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "OrinTabs"
