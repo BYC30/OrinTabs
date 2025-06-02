@@ -4,12 +4,21 @@
   <meta charset="utf-8" />
   <title>OrinTabs</title>
   <style>
-    body { font-family: sans-serif; padding: 10px; width: 200px; }
-    button { width: 100%; padding: 8px; }
+    body { font-family: sans-serif; padding: 10px; width: 220px; }
+    button { width: 100%; padding: 8px; margin-top: 6px; }
+    input { width: 100%; box-sizing: border-box; margin-top: 4px; }
+    label { font-size: 12px; }
   </style>
 </head>
 <body>
   <button id="group-btn">Intelligent Group</button>
+  <button id="summarize-btn">Summarize & Group</button>
+  <hr/>
+  <label for="api-url">LLM API URL</label>
+  <input id="api-url" type="text" placeholder="https://api.openai.com/v1/chat/completions" />
+  <label for="api-key">API Key</label>
+  <input id="api-key" type="text" placeholder="sk-..." />
+  <button id="save-config-btn">Save Settings</button>
   <script src="popup.js"></script>
 </body>
 </html>
