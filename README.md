@@ -34,7 +34,7 @@ OrinTabs (设想中) 会在本地或通过安全的 API 与一个大型语言模
 
 ## 🔑 LLM API 配置 (LLM API Configuration)
 
-默认实现使用 [OpenAI](https://openai.com/) 的接口进行摘要处理。安装插件后，点击图标可在弹出的菜单中配置 **LLM API URL** 以及 **API Key**。保存设置后，插件会使用您提供的后端和密钥进行摘要调用。
+默认实现使用 [OpenAI] 的接口进行摘要处理。安装插件后，点击图标可在弹出的菜单中配置 **LLM API URL** 以及 **API Key**。保存设置后，插件会使用您提供的后端和密钥进行摘要调用。
 
 ## 📖 使用指南 (Usage)
 
