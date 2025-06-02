@@ -17,6 +17,7 @@
 *   **重复标签检测 (Duplicate Tab Detection):** 智能识别并帮助您管理重复打开的标签页。
 *   **工作区管理 (Workspace Management):** 基于项目、任务或主题创建和切换不同的标签页工作区。
 *   **自然语言命令 (Natural Language Commands):** (未来规划) 通过简单的自然语言指令管理标签，例如“关闭所有购物相关的标签”。
+*   **可选暗黑模式 (Optional Dark Mode):** 弹出页支持暗黑主题，并在界面上显示当前窗口的标签和分组数量。
 
 ## 🤔 为何选择 OrinTabs? (Why OrinTabs?)
 
