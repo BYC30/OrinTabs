@@ -53,6 +53,13 @@ OrinTabs (设想中) 会在本地或通过安全的 API 与一个大型语言模
 它会创建 `release-{version}` 分支并打包 `src` 目录生成 `OrinTabs.zip`，
 随后将这个压缩包上传到新的 Release 中。
 
+## 🔄 自动发布 (Automated Release)
+本仓库提供 `Build and Release Chrome Extension` 的 GitHub Actions 工作流。
+
+在 GitHub 的 **Actions** 选项卡中手动触发该流程，并填写发布版本号后，
+它会创建 `release-{version}` 分支并打包 `src` 目录生成 `OrinTabs.zip`，
+随后将这个压缩包上传到新的 Release 中。
+
 
 ## 💡 未来规划 (Roadmap)
 
