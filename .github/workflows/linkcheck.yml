@@ -1,0 +1,24 @@
+name: Link Checker
+
+# Grant minimal permissions
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Check links in README
+        uses: lycheeverse/lychee-action@v1.8.0
+        with:
+          args: README.md --verbose --no-progress --fail
+          fail: true
