@@ -43,10 +43,12 @@ async function groupTabsByDomain() {
 
 async function getConfig() {
   return new Promise(resolve => {
-    chrome.storage.local.get(['apiKey', 'apiUrl'], (result) => {
+    chrome.storage.local.get(['apiKey', 'apiUrl', 'model', 'prompt'], (result) => {
       resolve({
         apiKey: result.apiKey || '',
-        apiUrl: result.apiUrl || 'https://api.openai.com/v1/chat/completions'
+        apiUrl: result.apiUrl || 'https://api.openai.com/v1/chat/completions',
+        model: result.model || 'gpt-3.5-turbo',
+        prompt: result.prompt || 'Summarize the following text in one short sentence:'
       });
     });
   });
@@ -81,11 +83,14 @@ async function summarizeAndGroupActiveTab() {
 }
 
 async function summarizeText(text) {
-  const { apiKey, apiUrl } = await getConfig();
+  const { apiKey, apiUrl, model, prompt } = await getConfig();
   if (!apiKey) {
     console.error('LLM API key not configured');
     return null;
   }
+  let message = prompt.includes('{text}') ?
+    prompt.replace('{text}', text) :
+    `${prompt} ${text}`;
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -93,8 +98,8 @@ async function summarizeText(text) {
       'Authorization': `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      model: 'gpt-3.5-turbo',
-      messages: [{role: 'user', content: `Summarize the following text in one short sentence: ${text}`}],
+      model,
+      messages: [{role: 'user', content: message.trim()}],
       max_tokens: 60
     })
   });

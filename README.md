@@ -35,23 +35,17 @@ OrinTabs (设想中) 会在本地或通过安全的 API 与一个大型语言模
 ## 🔑 LLM API 配置 (LLM API Configuration)
 
 默认实现使用 [OpenAI] 的接口进行摘要处理。安装插件后，点击图标可在弹出的菜单中配置 **LLM API URL** 以及 **API Key**。保存设置后，插件会使用您提供的后端和密钥进行摘要调用。
+此外，还可以设置 **Model** 与 **Prompt**。Prompt 支持在文本中使用 `{text}` 占位符表示待总结内容，当未提供占位符时，插件会在 Prompt 之后附加原文。
 
 ## 📖 使用指南 (Usage)
 
 1.  在浏览器扩展管理页面选择“加载已解压的扩展程序”，并指向本仓库的 `src` 目录。
 2.  安装插件后，点击浏览器工具栏上的 OrinTabs 图标。
-3.  在弹出的菜单底部填入您希望使用的 **LLM API URL** 和 **API Key**，点击“Save Settings” 保存。
+3.  在弹出的菜单底部填入您希望使用的 **LLM API URL**、**API Key**，以及可选的 **Model** 和 **Prompt**，点击“Save Settings” 保存。
 4.  点击“Intelligent Group”按钮以根据域名对当前窗口的标签页进行分组。这是对未来 LLM 分组功能的简化实现。
 5.  点击“Summarize & Group”按钮，让插件读取当前活动标签页内容，调用大型语言模型生成摘要，并基于摘要自动创建或加入相应分组。
 6.  使用顶部的搜索框进行自然语言搜索。
 7.  右键点击标签页或分组以获取更多选项 (例如，摘要、添加到工作区)。
-
-## 🔄 自动发布 (Automated Release)
-本仓库提供 `Build and Release Chrome Extension` 的 GitHub Actions 工作流。
-
-在 GitHub 的 **Actions** 选项卡中手动触发该流程，并填写发布版本号后，
-它会创建 `release-{version}` 分支并打包 `src` 目录生成 `OrinTabs.zip`，
-随后将这个压缩包上传到新的 Release 中。
 
 ## 🔄 自动发布 (Automated Release)
 本仓库提供 `Build and Release Chrome Extension` 的 GitHub Actions 工作流。
