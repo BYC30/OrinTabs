@@ -8,11 +8,17 @@
     button { width: 100%; padding: 8px; margin-top: 6px; }
     input { width: 100%; box-sizing: border-box; margin-top: 4px; }
     label { font-size: 12px; }
+    #stats { font-size: 12px; margin-top: 8px; text-align: center; }
+    body.dark { background-color: #333; color: #eee; }
+    body.dark button { background-color: #555; color: #eee; }
+    body.dark input { background-color: #444; color: #eee; border: 1px solid #666; }
   </style>
 </head>
 <body>
   <button id="group-btn">Intelligent Group</button>
   <button id="summarize-btn">Summarize & Group</button>
+  <div id="stats"></div>
+  <button id="toggle-theme-btn">Toggle Dark Mode</button>
   <hr/>
   <label for="api-url">LLM API URL</label>
   <input id="api-url" type="text" placeholder="https://api.openai.com/v1/chat/completions" />
