@@ -10,6 +10,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else if (request.action === 'summarizeAndGroup') {
     summarizeAndGroupActiveTab();
     sendResponse({status: 'ok'});
+  } else if (request.action === 'semanticSearch') {
+    semanticSearch(request.query).then(results => {
+      sendResponse(results);
+    });
+    return true; // indicates async response
   }
 });
 
@@ -101,4 +106,34 @@ async function summarizeText(text) {
 
   const data = await response.json();
   return data.choices && data.choices[0] && data.choices[0].message.content.trim();
+}
+
+// Perform a simple semantic search across open tabs and browser history.
+// This implementation does basic keyword matching but includes history
+// results alongside currently open tabs.
+async function semanticSearch(query) {
+  const tabs = await chrome.tabs.query({});
+  const historyItems = await chrome.history.search({text: '', maxResults: 100});
+
+  const items = [];
+  for (const t of tabs) {
+    if (t.url) items.push({title: t.title || t.url, url: t.url});
+  }
+  for (const h of historyItems) {
+    if (h.url) items.push({title: h.title || h.url, url: h.url});
+  }
+
+  const tokens = query.toLowerCase().split(/\s+/).filter(Boolean);
+
+  const results = [];
+  for (const item of items) {
+    const text = `${item.title} ${item.url}`.toLowerCase();
+    const matched = tokens.every(tok => text.includes(tok));
+    if (matched) {
+      results.push(item);
+    }
+    if (results.length >= 5) break;
+  }
+
+  return results;
 }

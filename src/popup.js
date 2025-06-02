@@ -10,6 +10,23 @@ document.getElementById('summarize-btn').addEventListener('click', () => {
   });
 });
 
+document.getElementById('search-btn').addEventListener('click', () => {
+  const query = document.getElementById('search-query').value;
+  chrome.runtime.sendMessage({action: 'semanticSearch', query}, (results) => {
+    const list = document.getElementById('search-results');
+    list.innerHTML = '';
+    results.forEach(item => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.textContent = item.title;
+      a.href = item.url;
+      a.target = '_blank';
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   chrome.storage.local.get(['apiKey', 'apiUrl'], (result) => {
     document.getElementById('api-key').value = result.apiKey || '';
